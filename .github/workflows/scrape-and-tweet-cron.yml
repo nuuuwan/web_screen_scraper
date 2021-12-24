@@ -1,9 +1,8 @@
 name: Scrape and Tweet - Cron
 
-# on:
-#  schedule:
-#    - cron:  "30 11 * * *"
-on: workflow_dispatch
+on:
+ schedule:
+   - cron:  "30 11 * * *"
 
 jobs:
   tweet:
