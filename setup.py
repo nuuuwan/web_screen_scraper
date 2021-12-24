@@ -29,7 +29,7 @@ setuptools.setup(
         'bs4',
         'pytest',
         'selenium',
-        'tweepy',
+        'tweepy==3.10.0',
         'utils-nuuuwan',
     ],
 )
