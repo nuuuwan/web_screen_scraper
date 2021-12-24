@@ -39,16 +39,16 @@ CONFIG = [
         header='Men\'s Test #Cricket - Team Rankings (@ICC)',
         footer='',
     ),
-    dict(
-        name='gmaps-colombo-traffic',
-        url=os.path.join(
-            'https://www.google.com',
-            'maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
-        ),
-        window_width_height=[2000, 900],
-        left_top=[700, 60],
-        width_height=[1200, 675],
-        header='#Colombo Traffic (@GoogleMaps)',
-        footer='#SriLanka #lka',
-    ),
+    # dict(
+    #     name='gmaps-colombo-traffic',
+    #     url=os.path.join(
+    #         'https://www.google.com',
+    #         'maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
+    #     ),
+    #     window_width_height=[2000, 900],
+    #     left_top=[700, 60],
+    #     width_height=[1200, 675],
+    #     header='#Colombo Traffic (@GoogleMaps)',
+    #     footer='#SriLanka #lka',
+    # ),
 ]
