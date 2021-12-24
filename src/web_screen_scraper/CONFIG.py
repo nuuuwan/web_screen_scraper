@@ -1,3 +1,5 @@
+import os
+
 CONFIG = [
     dict(
         name='cbsl-gov-lk-economy-snapshot',
@@ -17,7 +19,7 @@ CONFIG = [
     #     time_load=30,
     #     left_top=[60, 200],
     #     width_height=[3140, 1580],
-    #     header='#COVIDI19SL Vaccination Dashboard by presidentsoffice.gov.lk',
+    #     header='#COVID19SL Vaccination Dashboard by presidentsoffice.gov.lk',
     #     footer='#SriLanka  #lka #COVID19 #Vaccinated',
     # ),
     dict(
@@ -39,7 +41,10 @@ CONFIG = [
     ),
     dict(
         name='gmaps-colombo-traffic',
-        url='https://www.google.com/maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
+        url=os.path.join(
+            'https://www.google.com',
+            'maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
+        ),
         window_width_height=[2000, 900],
         left_top=[700, 60],
         width_height=[1200, 675],
