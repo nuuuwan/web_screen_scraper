@@ -4,7 +4,7 @@ import time
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from utils import timex, twitter
+from utils import timex, twitter, www
 
 from web_screen_scraper._utils import log
 from web_screen_scraper.CONFIG import CONFIG
@@ -43,6 +43,12 @@ def get_raw_image(name, url, window_width_height, time_load):
     driver.get(url)
     window_width, window_height = window_width_height
     driver.set_window_size(window_width, window_height)
+
+    img = driver.find_element_by_id('ImageChart')
+    if img:
+        src = img.get_attribute('src')
+        www.download_binary(src, raw_image_file)
+        return raw_image_file
 
     time.sleep(time_load)
     driver.get_screenshot_as_file(raw_image_file)
@@ -96,11 +102,17 @@ def run(d):
     time_load = d.get('time_load', DEFAULT_TIME_LOAD)
 
     raw_image_file = get_raw_image(name, url, window_width_height, time_load)
-    left_top = d['left_top']
-    width_height = d['width_height']
-    cropped_image_file = get_cropped_image(
-        name, raw_image_file, left_top, width_height
-    )
+    cropped_image_file = get_image_file(name, 'cropped')
+
+    left_top = d.get('left_top', None)
+    if left_top:
+        width_height = d['width_height']
+        get_cropped_image(
+            name, raw_image_file, left_top, width_height
+        )
+    else:
+        os.system(f'cp "{raw_image_file}" "{cropped_image_file}"')
+
     header = d['header']
     footer = d['footer']
 
