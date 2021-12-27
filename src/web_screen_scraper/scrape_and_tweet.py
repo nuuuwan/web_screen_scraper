@@ -74,11 +74,10 @@ def get_cropped_image(
 
 def tweet(header, url, footer, cropped_image_file):
     date = timex.get_date()
-    tweet_text = f'''{header} ({date})
+    tweet_text = f'''{header}
 
 {footer}
-
-Source: {url}'''
+Source: {url} ({date})'''
 
     twtr = twitter.Twitter.from_args()
     twtr.tweet(

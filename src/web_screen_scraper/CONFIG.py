@@ -1,4 +1,3 @@
-
 CONFIG = [
     dict(
         name='cbsl-gov-lk-economy-snapshot',
@@ -50,4 +49,20 @@ CONFIG = [
     #     header='#Colombo Traffic (@GoogleMaps)',
     #     footer='#SriLanka #lka',
     # ),
+    dict(
+        name='tradingeconomics-lk-foreign-exchange-reserves',
+        url='https://tradingeconomics.com/sri-lanka/foreign-exchange-reserves',
+        left_top=[1000, 530],
+        width_height=[750, 360],
+        header='#SriLanka Foreign Exchange Reserves',
+        footer='@tEconomics @CBSL #lka #ForEx',
+    ),
+    dict(
+        name='tradingeconomics-lk-tourist-arrivals',
+        url='https://tradingeconomics.com/sri-lanka/tourist-arrivals',
+        left_top=[1000, 650],
+        width_height=[750, 360],
+        header='#SriLanka Tourist Arrivals',
+        footer='@tEconomics @TourismLK #lka',
+    ),
 ]
