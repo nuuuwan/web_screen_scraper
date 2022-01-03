@@ -44,9 +44,9 @@ def get_raw_image(name, url, window_width_height, time_load):
     window_width, window_height = window_width_height
     driver.set_window_size(window_width, window_height)
 
-    img = driver.find_element_by_id('ImageChart')
-    if img:
-        src = img.get_attribute('src')
+    imgs = driver.find_elements_by_id('ImageChart')
+    if imgs:
+        src = imgs[0].get_attribute('src')
         www.download_binary(src, raw_image_file)
         return raw_image_file
 
@@ -107,9 +107,7 @@ def run(d):
     left_top = d.get('left_top', None)
     if left_top:
         width_height = d['width_height']
-        get_cropped_image(
-            name, raw_image_file, left_top, width_height
-        )
+        get_cropped_image(name, raw_image_file, left_top, width_height)
     else:
         os.system(f'cp "{raw_image_file}" "{cropped_image_file}"')
 
@@ -121,7 +119,10 @@ def run(d):
 
 def run_all():
     for d in CONFIG:
-        run(d)
+        try:
+            run(d)
+        except Exception as e:
+            log.error(str(e))
 
 
 if __name__ == '__main__':
