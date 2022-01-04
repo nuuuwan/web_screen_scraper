@@ -16,3 +16,4 @@
   *  [2021-12-27 03:41PM] Added tradingeconomics
   *  [2021-12-27 03:56PM] Added various trading economics
   *  [2022-01-03 04:18PM] Fixed CBSL Bug
+  *  [2022-01-04 05:41PM] Added more TE stats
