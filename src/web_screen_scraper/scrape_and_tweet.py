@@ -1,4 +1,5 @@
 import os
+import random
 import time
 
 from PIL import Image
@@ -119,6 +120,9 @@ def run(d):
 
 def run_all():
     for d in CONFIG:
+        time_sleep = 60 * (1 + random.random())
+        log.info(f'Sleeping for {time_sleep}s')
+        time.sleep(time_sleep)
         try:
             run(d)
         except Exception as e:
