@@ -31,5 +31,7 @@ setuptools.setup(
         'selenium',
         'tweepy==3.10.0',
         'utils-nuuuwan',
+        'gig-nuuuwan',
+        'geo-nuuuwan',
     ],
 )

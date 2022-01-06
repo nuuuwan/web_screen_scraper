@@ -7,16 +7,12 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from utils import timex, twitter, www
 
-from web_screen_scraper._utils import log
+from web_screen_scraper._utils import get_data_dir, get_image_file, log
 from web_screen_scraper.CONFIG import CONFIG
+from web_screen_scraper.gnd_street_view import gnd_scrape_and_tweet
 
 DEFAULT_TIME_LOAD = 5
 DEFAULT_WINDOW_WIDTH_HEIGHT = 3200, 1800
-
-
-def get_data_dir():
-    date_id = timex.get_date_id()
-    return f'/tmp/wss.{date_id}'
 
 
 def init():
@@ -26,35 +22,37 @@ def init():
         log.info(f'Created {data_dir}')
 
 
-def get_image_file(name, suffix):
-    return os.path.join(get_data_dir(), f'{name}.{suffix}.png')
+def open_browser():
+    options = Options()
+    options.headless = True
+    browser = webdriver.Firefox(options=options)
+    return browser
 
 
-def get_raw_image(name, url, window_width_height, time_load):
+def quit_browser(browser):
+    browser.quit()
+
+
+def get_raw_image(browser, name, url, window_width_height, time_load):
     raw_image_file = get_image_file(name, 'raw')
     if os.path.exists(raw_image_file):
         return raw_image_file
 
     log.info(f'Processing {name} ({url})')
 
-    options = Options()
-    options.headless = True
-
-    driver = webdriver.Firefox(options=options)
-    driver.get(url)
+    browser.get(url)
     window_width, window_height = window_width_height
-    driver.set_window_size(window_width, window_height)
+    browser.set_window_size(window_width, window_height)
 
-    imgs = driver.find_elements_by_id('ImageChart')
+    imgs = browser.find_elements_by_id('ImageChart')
     if imgs:
         src = imgs[0].get_attribute('src')
         www.download_binary(src, raw_image_file)
         return raw_image_file
 
     time.sleep(time_load)
-    driver.get_screenshot_as_file(raw_image_file)
+    browser.get_screenshot_as_file(raw_image_file)
     log.info(f'Saved raw screenshot to {raw_image_file}')
-    driver.quit()
 
     return raw_image_file
 
@@ -94,7 +92,7 @@ Source: {url} ({date})'''
     )
 
 
-def run(d):
+def run(browser, d):
     name = d['name']
     url = d['url']
     window_width_height = d.get(
@@ -102,7 +100,9 @@ def run(d):
     )
     time_load = d.get('time_load', DEFAULT_TIME_LOAD)
 
-    raw_image_file = get_raw_image(name, url, window_width_height, time_load)
+    raw_image_file = get_raw_image(
+        browser, name, url, window_width_height, time_load
+    )
     cropped_image_file = get_image_file(name, 'cropped')
 
     left_top = d.get('left_top', None)
@@ -119,14 +119,18 @@ def run(d):
 
 
 def run_all():
+    gnd_scrape_and_tweet()
+
+    browser = open_browser()
     for d in CONFIG:
         time_sleep = 60 * (1 + random.random())
         log.info(f'Sleeping for {time_sleep}s')
         time.sleep(time_sleep)
         try:
-            run(d)
+            run(browser, d)
         except Exception as e:
             log.error(str(e))
+    quit_browser(browser)
 
 
 if __name__ == '__main__':
