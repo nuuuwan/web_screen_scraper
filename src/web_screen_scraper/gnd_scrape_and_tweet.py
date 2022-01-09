@@ -20,7 +20,7 @@ LAT_SPAN = MAX_LAT - MIN_LAT
 LNG_SPAN = MAX_LNG - MIN_LNG
 ZOOM = 15
 DIM_WIDTH = 3
-DIM_HEIGHT = 1
+DIM_HEIGHT = 3
 
 
 def latlng_to_xy(latlng):
@@ -118,7 +118,9 @@ def run():
     raw_image_file = get_raw_image(latlng, gnd_id)
 
     gnd = ents.get_entity(gnd_id)
+    print(gnd)
     gnd_name = gnd['name']
+    gnd_num = gnd['gnd_num']
 
     dsd_id = gnd['dsd_id']
     district_id = gnd['district_id']
@@ -133,7 +135,7 @@ def run():
         f'https://www.openstreetmap.org/#map={ZOOM}/{lat}/{lng}'
     )
 
-    tweet_text = f'''{gnd_name} ({gnd_id}) GND
+    tweet_text = f'''{gnd_name} GND ({gnd_id}, {gnd_num})
 
 Located within the {dsd_name} DSD, {district_name} District,
 {province_name} Province, Sri Lanka
