@@ -18,7 +18,7 @@ MIN_LNG = 79.516667
 MAX_LNG = 81.879167
 LAT_SPAN = MAX_LAT - MIN_LAT
 LNG_SPAN = MAX_LNG - MIN_LNG
-ZOOM = 14
+ZOOM = 15
 DIM_WIDTH = 3
 DIM_HEIGHT = 1
 
@@ -119,12 +119,24 @@ def run():
 
     gnd = ents.get_entity(gnd_id)
     gnd_name = gnd['name']
+
+    dsd_id = gnd['dsd_id']
+    district_id = gnd['district_id']
+    province_id = gnd['province_id']
+
+    dsd_name = ents.get_entity(dsd_id).get('name')
+    district_name = ents.get_entity(district_id).get('name')
+    province_name = ents.get_entity(province_id).get('name')
+
     lat, lng = latlng
     openstreetmap_url = (
         f'https://www.openstreetmap.org/#map={ZOOM}/{lat}/{lng}'
     )
 
-    tweet_text = f'''{gnd_name} ({gnd_id})
+    tweet_text = f'''{gnd_name} ({gnd_id}) GND
+
+Located within the {dsd_name} DSD, {district_name} District,
+{province_name} Province, Sri Lanka
 
 Source: @openstreetmap ({openstreetmap_url})
 
