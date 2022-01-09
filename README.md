@@ -22,3 +22,4 @@
   *  [2022-01-09 09:35AM] ZOOM = 15
   *  [2022-01-09 09:57AM] Split gnd_scrape_and_tweet
   *  [2022-01-09 09:58AM] Split gnd_scrape_and_tweet - changed workflow name
+  *  [2022-01-09 10:09AM] Image dim for gnd_
