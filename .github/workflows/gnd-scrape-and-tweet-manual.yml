@@ -1,4 +1,4 @@
-name: Scrape and Tweet - Manual
+name: GND Scrape and Tweet - Manual
 
 on: workflow_dispatch
 

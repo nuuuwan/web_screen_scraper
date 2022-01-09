@@ -21,3 +21,4 @@
   *  [2022-01-06 11:30AM] Added gnd
   *  [2022-01-09 09:35AM] ZOOM = 15
   *  [2022-01-09 09:57AM] Split gnd_scrape_and_tweet
+  *  [2022-01-09 09:58AM] Split gnd_scrape_and_tweet - changed workflow name

@@ -1,4 +1,4 @@
-name: Scrape and Tweet - Cron
+name: GND Scrape and Tweet - Cron
 
 on:
  schedule:
