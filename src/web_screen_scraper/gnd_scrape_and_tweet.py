@@ -4,9 +4,9 @@ import random
 from geo import geodata
 from gig import ents
 from PIL import Image
-from utils import www, twitter
+from utils import twitter, www
 
-from web_screen_scraper._utils import get_image_file, log
+from web_screen_scraper._utils import get_image_file, init_data_dir, log
 
 TIME_LOAD = 5
 MIN_FILE_SIZE = 10_000
@@ -111,7 +111,7 @@ def get_raw_image(latlng, gnd_id):
     return combined_raw_image_file
 
 
-def gnd_scrape_and_tweet():
+def run():
     latlng, gnd_id = get_random_latlng()
     if not latlng:
         return None
@@ -120,7 +120,9 @@ def gnd_scrape_and_tweet():
     gnd = ents.get_entity(gnd_id)
     gnd_name = gnd['name']
     lat, lng = latlng
-    openstreetmap_url = f'https://www.openstreetmap.org/#map={ZOOM}/{lat}/{lng}'
+    openstreetmap_url = (
+        f'https://www.openstreetmap.org/#map={ZOOM}/{lat}/{lng}'
+    )
 
     tweet_text = f'''{gnd_name} ({gnd_id})
 
@@ -134,3 +136,8 @@ Source: @openstreetmap ({openstreetmap_url})
         status_image_files=[raw_image_file],
         update_user_profile=True,
     )
+
+
+if __name__ == '__main__':
+    init_data_dir()
+    run()

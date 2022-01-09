@@ -7,19 +7,11 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from utils import timex, twitter, www
 
-from web_screen_scraper._utils import get_data_dir, get_image_file, log
+from web_screen_scraper._utils import get_image_file, init_data_dir, log
 from web_screen_scraper.CONFIG import CONFIG
-from web_screen_scraper.gnd_street_view import gnd_scrape_and_tweet
 
 DEFAULT_TIME_LOAD = 5
 DEFAULT_WINDOW_WIDTH_HEIGHT = 3200, 1800
-
-
-def init():
-    data_dir = get_data_dir()
-    if not os.path.exists(data_dir):
-        os.mkdir(data_dir)
-        log.info(f'Created {data_dir}')
 
 
 def open_browser():
@@ -119,8 +111,6 @@ def run(browser, d):
 
 
 def run_all():
-    gnd_scrape_and_tweet()
-
     browser = open_browser()
     for d in CONFIG:
         time_sleep = 60 * (1 + random.random())
@@ -134,5 +124,5 @@ def run_all():
 
 
 if __name__ == '__main__':
-    init()
+    init_data_dir()
     run_all()

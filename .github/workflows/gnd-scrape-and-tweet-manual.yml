@@ -1,0 +1,30 @@
+name: Scrape and Tweet - Manual
+
+on: workflow_dispatch
+
+jobs:
+  tweet:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install requirements
+      run: |
+        pip install --upgrade --upgrade-strategy eager -r requirements.txt -e .
+
+    - name: Test
+      uses: nuuuwan/python-repo-test@v1
+
+    - name: Run - Tweet
+      run: |
+        export PYTHONPATH="$PYTHONPATH:./src"
+        python src/web_screen_scraper/gnd_scrape_and_tweet.py --twtr_api_key "${{ secrets.TWTR_API_KEY }}" --twtr_api_secret_key "${{ secrets.TWTR_API_SECRET_KEY }}" --twtr_access_token "${{ secrets.TWTR_ACCESS_TOKEN }}" --twtr_access_token_secret "${{ secrets.TWTR_ACCESS_TOKEN_SECRET }}"
