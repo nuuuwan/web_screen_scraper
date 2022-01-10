@@ -160,6 +160,6 @@ CONFIG = [
         header='#SriLanka Weather via @VentuskyCom',
         footer='#lka',
         freq=timex.SECONDS_IN.HOUR,
-        width_height=[1600, 900],
+        window_width_height=[1600, 900],
     ),
 ]
