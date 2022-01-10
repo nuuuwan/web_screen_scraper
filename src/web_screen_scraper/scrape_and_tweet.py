@@ -1,4 +1,3 @@
-import argparse
 import os
 import random
 import time
@@ -8,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from utils import timex, twitter, www
 
-from web_screen_scraper._utils import get_image_file, init_data_dir, log
+from web_screen_scraper._utils import get_image_file, log
 from web_screen_scraper.CONFIG import CONFIG
 
 DEFAULT_TIME_LOAD = 5
@@ -114,10 +113,9 @@ def run(browser, d):
 def run_all(freq):
     browser = open_browser()
     filtered_config = list(filter(lambda d: d['freq'] == freq, CONFIG))
-            
+
     n_filtered_config = len(filtered_config)
     log.info(f'Found {n_filtered_config} config items with freq={freq}')
-
 
     for d in filtered_config:
         time_sleep = 60 * (1 + random.random())
@@ -128,21 +126,3 @@ def run_all(freq):
         except Exception as e:
             log.error(str(e))
     quit_browser(browser)
-
-
-def get_args_freq():
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument(
-        'freq',
-        help='Frequency of Cron',
-        type=int,
-        default=7,
-    )
-    args = parser.parse_args()
-    return args.freq
-
-
-if __name__ == '__main__':
-    freq = get_args_freq()
-    init_data_dir()
-    run_all(freq)

@@ -28,3 +28,4 @@
   *  [2022-01-09 10:24AM] Added GND NUM
   *  [2022-01-10 11:39AM] Added multiple workflows
   *  [2022-01-10 11:40AM] Updated manual
+  *  [2022-01-10 11:45AM] Removed args dep
