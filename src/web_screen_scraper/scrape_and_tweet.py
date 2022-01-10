@@ -1,3 +1,4 @@
+import argparse
 import os
 import random
 import time
@@ -110,9 +111,18 @@ def run(browser, d):
     tweet(header, url, footer, cropped_image_file)
 
 
-def run_all():
+def run_all(freq):
     browser = open_browser()
-    for d in CONFIG:
+    if freq > 0:
+        filtered_config = list(filter(lambda d: d['freq'] == freq, CONFIG))
+    else:
+        filtered_config = CONFIG
+            
+    n_filtered_config = len(filtered_config)
+    log.info(f'Found {n_filtered_config} config items with freq={freq}')
+
+
+    for d in filtered_config:
         time_sleep = 60 * (1 + random.random())
         log.info(f'Sleeping for {time_sleep}s')
         time.sleep(time_sleep)
@@ -123,6 +133,19 @@ def run_all():
     quit_browser(browser)
 
 
+def get_args_freq():
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument(
+        'freq',
+        help='Frequency of Cron',
+        type=int,
+        default=7,
+    )
+    args = parser.parse_args()
+    return args.freq
+
+
 if __name__ == '__main__':
+    freq = get_args_freq()
     init_data_dir()
-    run_all()
+    run_all(freq)

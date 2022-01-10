@@ -1,3 +1,7 @@
+import os
+
+from utils import timex
+
 CONFIG = [
     dict(
         name='cbsl-gov-lk-economy-snapshot',
@@ -6,20 +10,8 @@ CONFIG = [
         width_height=[860, 1040],
         header='#SriLanka #Economy Snapshot by @CBSL',
         footer='#lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
-    # dict(
-    #     name='presidentsoffice-gov-lk-vaccination-dashboard',
-    #     url=os.path.join(
-    #         'https://www.presidentsoffice.gov.lk/index.php',
-    #         'vaccination-dashboard/',
-    #     ),
-    #     window_width_height=[3200, 2700],
-    #     time_load=30,
-    #     left_top=[60, 200],
-    #     width_height=[3140, 1580],
-    #     header='#COVID19SL Vaccination Dashboard by presidentsoffice.gov.lk',
-    #     footer='#SriLanka  #lka #COVID19 #Vaccinated',
-    # ),
     dict(
         name='statistics-gov-lk-figures',
         url='http://www.statistics.gov.lk',
@@ -27,6 +19,7 @@ CONFIG = [
         width_height=[460, 330],
         header='#SriLanka in Figures',
         footer='#lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='icc-team-rankings-test',
@@ -36,42 +29,48 @@ CONFIG = [
         width_height=[1150, 530],
         header='Men\'s Test #Cricket - Team Rankings (@ICC)',
         footer='',
+        freq=timex.SECONDS_IN.WEEK,
     ),
-    # dict(
-    #     name='gmaps-colombo-traffic',
-    #     url=os.path.join(
-    #         'https://www.google.com',
-    #         'maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
-    #     ),
-    #     window_width_height=[2000, 900],
-    #     left_top=[700, 60],
-    #     width_height=[1200, 675],
-    #     header='#Colombo Traffic (@GoogleMaps)',
-    #     footer='#SriLanka #lka',
-    # ),
+    dict(
+        name='gmaps-colombo-traffic',
+        url=os.path.join(
+            'https://www.google.com',
+            'maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
+        ),
+        window_width_height=[2000, 900],
+        left_top=[700, 60],
+        width_height=[1200, 675],
+        header='#Colombo Traffic (@GoogleMaps)',
+        footer='#SriLanka #lka',
+        freq=timex.SECONDS_IN.HOUR,
+    ),
     dict(
         name='tradingeconomics-lk-foreign-exchange-reserves',
         url='https://tradingeconomics.com/sri-lanka/foreign-exchange-reserves',
         header='#SriLanka Foreign Exchange Reserves',
         footer='@tEconomics @CBSL #lka #ForEx',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-tourist-arrivals',
         url='https://tradingeconomics.com/sri-lanka/tourist-arrivals',
         header='#SriLanka Tourist Arrivals',
         footer='@tEconomics @TourismLK #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-gdp-growth-annual',
         url='https://tradingeconomics.com/sri-lanka/gdp-growth-annual',
         header='#SriLanka GDP Annual Growth Rate',
         footer='@tEconomics statistics.gov.lk #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-inflation-cpi',
         url='https://tradingeconomics.com/sri-lanka/inflation-cpi',
         header='#SriLanka Inflation Rate',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-foreign-direct-investment',
@@ -79,48 +78,56 @@ CONFIG = [
         header='#SriLanka Foreign Direct Investment'
         + ' - Net Inflows (USD Million)',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-remittances',
         url='https://tradingeconomics.com/sri-lanka/remittances',
         header='#SriLanka Remittances (USD Million)',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-exports',
         url='https://tradingeconomics.com/sri-lanka/exports',
         header='#SriLanka Exports (USD Million)',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-imports',
         url='https://tradingeconomics.com/sri-lanka/imports',
         header='#SriLanka Imports (USD Million)',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-tourism-revenues',
         url='https://tradingeconomics.com/sri-lanka/tourism-revenues',
         header='#SriLanka Tourism Revenues (USD Million)',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-gdp-per-capita-ppp',
         url='https://tradingeconomics.com/sri-lanka/gdp-per-capita-ppp',
         header='#SriLanka GDP per capita PPP (USD)',
         footer='@tEconomics @WorldBank #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-youth-unemployment-rate',
         url='https://tradingeconomics.com/sri-lanka/youth-unemployment-rate',
         header='#SriLanka Youth Unemployment Rate',
         footer='@tEconomics statistics.gov.lk #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-food-inflation',
         url='https://tradingeconomics.com/sri-lanka/food-inflation',
         header='#SriLanka Food Inflation (YoY)',
         footer='@tEconomics statistics.gov.lk #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-exports-by-country',
@@ -129,6 +136,7 @@ CONFIG = [
         footer='@tEconomics @UNTradeStats #lka',
         left_top=[1030, 220],
         width_height=[770, 370],
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-imports-by-country',
@@ -137,11 +145,13 @@ CONFIG = [
         footer='@tEconomics @UNTradeStats #lka',
         left_top=[1030, 220],
         width_height=[770, 370],
+        freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
         name='tradingeconomics-lk-car-registrations',
         url='https://tradingeconomics.com/sri-lanka/car-registrations',
         header='#SriLanka Car Registrations',
         footer='@tEconomics @CBSL #lka',
+        freq=timex.SECONDS_IN.WEEK,
     ),
 ]
