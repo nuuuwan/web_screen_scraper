@@ -120,9 +120,9 @@ def run_all(freq):
     log.info(f'Found {n_filtered_config} config items with freq={freq}')
 
     for d in filtered_config:
-        # time_sleep = 60 * (1 + random.random())
-        # log.info(f'Sleeping for {time_sleep}s')
-        # time.sleep(time_sleep)
+        time_sleep = 60 * (1 + random.random())
+        log.info(f'Sleeping for {time_sleep}s')
+        time.sleep(time_sleep)
         try:
             run(browser, d)
         except Exception as e:
