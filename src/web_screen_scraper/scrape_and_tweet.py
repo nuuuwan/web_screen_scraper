@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from utils import timex, twitter, www
 
-from web_screen_scraper._utils import get_image_file, log
+from web_screen_scraper._utils import get_image_file, init_data_dir, log
 from web_screen_scraper.CONFIG import CONFIG
 
 DEFAULT_TIME_LOAD = 5
@@ -111,6 +111,8 @@ def run(browser, d):
 
 
 def run_all(freq):
+    init_data_dir()
+
     browser = open_browser()
     filtered_config = list(filter(lambda d: d['freq'] == freq, CONFIG))
 
