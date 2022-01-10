@@ -113,10 +113,7 @@ def run(browser, d):
 
 def run_all(freq):
     browser = open_browser()
-    if freq > 0:
-        filtered_config = list(filter(lambda d: d['freq'] == freq, CONFIG))
-    else:
-        filtered_config = CONFIG
+    filtered_config = list(filter(lambda d: d['freq'] == freq, CONFIG))
             
     n_filtered_config = len(filtered_config)
     log.info(f'Found {n_filtered_config} config items with freq={freq}')
