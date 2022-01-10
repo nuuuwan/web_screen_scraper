@@ -35,12 +35,12 @@ CONFIG = [
         name='gmaps-colombo-traffic',
         url=os.path.join(
             'https://www.google.com',
-            'maps/@6.9066389,79.8601593,13z/data=!5m1!1e1',
+            'maps/@6.9157334,79.8575813,14.41z/data=!5m1!1e1',
         ),
         window_width_height=[2000, 900],
         left_top=[700, 60],
         width_height=[1200, 675],
-        header='#Colombo Traffic (@GoogleMaps)',
+        header='#Colombo Traffic via @GoogleMaps',
         footer='#SriLanka #lka',
         freq=timex.SECONDS_IN.HOUR,
     ),
@@ -153,5 +153,12 @@ CONFIG = [
         header='#SriLanka Car Registrations',
         footer='@tEconomics @CBSL #lka',
         freq=timex.SECONDS_IN.WEEK,
+    ),
+    dict(
+        name='ventusky-lk-rain-3h',
+        url='https://www.ventusky.com/?p=8.41;80.71;6&l=rain-3h',
+        header='#SriLanka Weather via @VentuskyCom',
+        footer='#lka',
+        freq=timex.SECONDS_IN.HOUR,
     ),
 ]
