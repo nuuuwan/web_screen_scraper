@@ -32,19 +32,6 @@ CONFIG = [
         freq=timex.SECONDS_IN.WEEK,
     ),
     dict(
-        name='gmaps-colombo-traffic',
-        url=os.path.join(
-            'https://www.google.com',
-            'maps/@6.9157334,79.8575813,14.41z/data=!5m1!1e1',
-        ),
-        window_width_height=[2000, 900],
-        left_top=[700, 60],
-        width_height=[1200, 675],
-        header='#Colombo Traffic via @GoogleMaps',
-        footer='#SriLanka #lka',
-        freq=timex.SECONDS_IN.HOUR,
-    ),
-    dict(
         name='tradingeconomics-lk-foreign-exchange-reserves',
         url='https://tradingeconomics.com/sri-lanka/foreign-exchange-reserves',
         header='#SriLanka Foreign Exchange Reserves',
@@ -159,7 +146,20 @@ CONFIG = [
         url='https://www.ventusky.com/?p=8.41;80.71;6&l=rain-3h',
         header='#SriLanka Weather via @VentuskyCom',
         footer='#lka',
-        freq=timex.SECONDS_IN.HOUR,
+        freq=timex.SECONDS_IN.HOUR * 3,
         window_width_height=[1600, 900],
+    ),
+    dict(
+        name='gmaps-colombo-traffic',
+        url=os.path.join(
+            'https://www.google.com',
+            'maps/@6.9157334,79.8575813,14.41z/data=!5m1!1e1',
+        ),
+        window_width_height=[2000, 2000],
+        left_top=[700, 60],
+        width_height=[1200, 1675],
+        header='#Colombo Traffic via @GoogleMaps',
+        footer='#SriLanka #lka',
+        freq=timex.SECONDS_IN.HOUR * 3,
     ),
 ]
