@@ -39,3 +39,4 @@
   *  [2022-01-11 08:25AM] Added Google News
   *  [2022-01-11 08:26AM] Changed daily cron bug
   *  [2022-01-11 08:31AM] Updated GND cron
+  *  [2022-01-11 08:32AM] Updated google news size
