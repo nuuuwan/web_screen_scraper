@@ -165,11 +165,11 @@ CONFIG = [
     dict(
         name='google-news-lk',
         url=os.path.join(
-            'https://www.google.com/search?q=Sri+Lanka&tbm=nws',
+            'https://www.google.com/search?q=Sri+Lanka&tbm=nws&tbs=qdr:d',
         ),
-        window_width_height=[900, 1340],
-        left_top=[100, 210],
-        width_height=[900 - 100, 1340 - 210 - 100],
+        window_width_height=[900, 1500],
+        left_top=[100, 170],
+        width_height=[900 - 100, 1500 - 170 - 130],
         header='#SriLanka on @GoogleNews',
         footer='#lka',
         freq=timex.SECONDS_IN.HOUR * 3,

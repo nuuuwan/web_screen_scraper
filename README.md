@@ -41,3 +41,4 @@
   *  [2022-01-11 08:31AM] Updated GND cron
   *  [2022-01-11 08:32AM] Updated google news size
   *  [2022-01-11 08:47AM] Google News Size
+  *  [2022-01-11 06:14PM] Made Google News last 24 hours
