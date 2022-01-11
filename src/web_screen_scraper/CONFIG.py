@@ -150,7 +150,7 @@ CONFIG = [
         window_width_height=[1600, 900],
     ),
     dict(
-        name='gmaps-colombo-traffic',
+        name='google-maps-colombo-traffic',
         url=os.path.join(
             'https://www.google.com',
             'maps/@6.9157334,79.8575813,14.41z/data=!5m1!1e1',
@@ -160,6 +160,18 @@ CONFIG = [
         width_height=[1200, 1675],
         header='#Colombo Traffic via @GoogleMaps',
         footer='#SriLanka #lka',
+        freq=timex.SECONDS_IN.HOUR * 3,
+    ),
+    dict(
+        name='google-news-lk',
+        url=os.path.join(
+            'https://www.google.com/search?q=Sri+Lanka&tbm=nws',
+        ),
+        window_width_height=[900, 2400],
+        left_top=[100, 165],
+        width_height=[900 - 100, 2400 - 165],
+        header='#SriLanka on @GoogleNews',
+        footer='#lka',
         freq=timex.SECONDS_IN.HOUR * 3,
     ),
 ]

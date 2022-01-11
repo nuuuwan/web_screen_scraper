@@ -36,3 +36,4 @@
   *  [2022-01-10 12:26PM] Actually reduced ventusky size - lint etc
   *  [2022-01-10 05:38PM] Every 3 hours
   *  [2022-01-11 08:03AM] Changed Google Maps size
+  *  [2022-01-11 08:25AM] Added Google News
