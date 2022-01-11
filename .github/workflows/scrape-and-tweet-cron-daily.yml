@@ -2,7 +2,7 @@ name: Scrape and Tweet - Cron Daily
 
 on:
  schedule:
-   - cron:  "15 11 * * 0"
+   - cron:  "15 11 * * *"
 
 jobs:
   tweet:
