@@ -169,7 +169,7 @@ CONFIG = [
         ),
         window_width_height=[900, 1500],
         left_top=[100, 170],
-        width_height=[900 - 100, 1500 - 170 - 130],
+        width_height=[900 - 100, 1500 - 170 - 370],
         header='#SriLanka on @GoogleNews',
         footer='#lka',
         freq=timex.SECONDS_IN.HOUR * 3,
