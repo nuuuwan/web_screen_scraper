@@ -120,7 +120,7 @@ def run_all(freq):
     log.info(f'Found {n_filtered_config} config items with freq={freq}')
 
     for d in filtered_config:
-        time_sleep = 5 * (1 + random.random())
+        time_sleep = 30 * (1 + random.random())
         log.info(f'Sleeping for {time_sleep}s')
         time.sleep(time_sleep)
         try:
